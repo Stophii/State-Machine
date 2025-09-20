@@ -67,7 +67,10 @@ impl GameState {
 }
 ```
 
-We initialize `screen` as Screen and `frames` as u32.
+We define `screen` as Screen and `frames` as u32.
+
+We initialize `screen` as Screen::Title and `frames` as 0 in `GameState::new`.
+
 
 Let's add the Screen `enum` to `state.rs`:
 
