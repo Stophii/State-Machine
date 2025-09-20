@@ -183,6 +183,6 @@ State machines will help you keep clean code and have you coming back to the `st
 
 Staying organized is important when your project starts to scale and you'll thank yourself later when you can find and isolate where a crash/error exists.
 
-Make sure to like and subscribe if you watched the video and join our [discord](discord.gg/V5YWWvQvKW) for active help! 
+Make sure to like and subscribe if you watched the video and join our [discord](https://discord.gg/V5YWWvQvKW) for active help! 
 
 
