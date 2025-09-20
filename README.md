@@ -8,7 +8,7 @@ A video guide on [`state machines`](https://www.youtube.com/watch?v=6XMg5csFccw&
 
 Every new Turbo project begins with a `lib.rs`, a `GameState` struct, and an impl block that defines the `new()` and `update()` functions. 
 
-To set up a simple state machine, create a new file named `state.rs` and add a `Screen` enum in it. 
+To set up a simple state machine, create a new file named `state.rs` and add a `Screen` enum to it. 
 
 You can create a new file directly from Visual Studio Code (or any editor you prefer).
 
@@ -34,15 +34,17 @@ mod state;
 > When you add more files, repeat the same pattern in `lib.rs`:
 >
 > ```rust
-> mod {file_name};
-> use {file_name}::*;
+> use state::*;
+> mod state;
+> use {file_name}::*; // <-- Add this for new files!
+> mod {file_name}; // <-- Add this for new files!
 > ```
 
 ## Adding fields to GameState
 
-next up we are going to add a `screen` field to your `GameState` struct as well as a `frames` field. 
+Next up, we are going to add a `screen` field to your `GameState` struct as well as a `frames` field. 
 
-> The `frames` field is for demo purposes so if you want you can skip this field.
+> The `frames` field is for for demo purposes, so you can skip it if you want.
 
 ```rust
 struct GameState {
@@ -65,12 +67,12 @@ impl GameState {
 }
 ```
 
-We initialize the `screen` field as a Screen `enum` and then we do the same for `frames` but it will be initialized as `u32`.
+We initialize `screen` as Screen and `frames` as u32.
 
-Lets add the Screen `enum` to `state.rs`:
+Let's add the Screen `enum` to `state.rs`:
 
 ```rust
-#[turbo::serialize] //add this above structs and enums
+#[turbo::serialize] // add this above structs and enums
 
 pub enum Screen {
     Title,
@@ -78,12 +80,12 @@ pub enum Screen {
     Game,
 }
 ```
-Now make sure to save your project with cmd+S or ctrl+S
+Now make sure to save your project with Cmd+S or Ctrl+S
 
 > [!TIP]
 > Try to have your project running and open while programming in Turbo with: 
 >
-> ```rust
+> ```bash
 > turbo run -w
 > ```
 >
@@ -92,7 +94,7 @@ Now make sure to save your project with cmd+S or ctrl+S
 
 ## Initializing the state machine
 
-Now that we have an `enum` for Screen and the `state.rs` file lets add the actual `state_of_game` function.
+Now that we have an `enum` for Screen and the `state.rs` file let's add the actual `state_of_game` function.
 > **Tip** Make sure `state_of_game` is `pub` (public) so `lib.rs` can read it and use it!
 ```rust
 pub fn state_of_game(state: &mut GameState) {
@@ -110,7 +112,7 @@ pub fn state_of_game(state: &mut GameState) {
 }
 ```
 
-Right now it is empty but we'll fix that as soon as we "turn it on" in our GameState `update`, add it here in `lib.rs`:
+Right now it is empty but we'll fix that as soon as we "turn it on" in our `GameState::update`, add this in `lib.rs`:
 
 ```rust
     pub fn update(&mut self) {
@@ -120,7 +122,7 @@ Right now it is empty but we'll fix that as soon as we "turn it on" in our GameS
     }
 ```
 
-Now you have a fully opperational state machine! Lets add some substance to the `state_of_game` function as well as ways to switch from each Screen.
+Now you have a fully operational state machine! Let's add some substance to the `state_of_game` function as well as ways to switch between screens.
 
 ```rust
 pub fn state_of_game(state: &mut GameState) {
@@ -165,24 +167,24 @@ pub fn state_of_game(state: &mut GameState) {
 }
 ```
 
-If you press `z` on your keyboard or `a` on gamepad you'll switch from the Title screen to the Loading screen.
+If you press `Z` on your keyboard or `A` on gamepad you'll switch from the Title screen to the Loading screen.
 
 After 200 `frames` accumulate thanks to `state.frames += 1` you'll pass the Loading screen to the Game screen.
 
 At the Game screen you can press `x` on your keyboard or `b` on gamepad to head back to the Title.
 
-This is a simple and very modular way to setup up screen shifting in your project and I highly encourage its use!
+This is a simple and very modular way to setup up screen switching in your project and I highly encourage its use!
 
 > [!TIP]
-> Adding more variants to the Screen `enum` will give you more states to change to just make sure to add them to the `state_of_game` function or add a `_ => {}` as a placeholder to avoid errors or crash outs!
+> Adding more variants to the Screen `enum` will give you more states to change to just make sure to add them to the `state_of_game` function or add a `_ => {}` as a placeholder to avoid errors or crashes!
 
 
 ## Ending Notes
 
-State machines will help you keep clean code and have you coming back to the `state.rs` to write a lot of code.
+State machines help you keep your code clean and have you returning to `state.rs` to expand your screens or fix screen-specific issues.
 
 Staying organized is important when your project starts to scale and you'll thank yourself later when you can find and isolate where a crash/error exists.
 
-Make sure to like and subscribe if you watched the video and join our [discord](https://discord.gg/V5YWWvQvKW) for active help! 
+Make sure to like and subscribe if you watched the video and join our [Discord](https://discord.gg/V5YWWvQvKW) for active help! 
 
 
