@@ -48,16 +48,16 @@ Next up, we are going to add a `screen` field to your `GameState` struct as well
 
 ```rust
 struct GameState {
-    screen: Screen,
-    frames: u32,
+    screen: Screen, // <- Define
+    frames: u32, // <- Define
 }
 
 impl GameState {
     pub fn new() -> Self {
         // initialize your game state
         Self { 
-            screen: Screen::Title,
-            frames: 0,  
+            screen: Screen::Title, // <- Initialize
+            frames: 0,  // <- Initialize
         }
     }
     pub fn update(&mut self) {
