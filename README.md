@@ -2,7 +2,7 @@
 
 ## Description
 
-A video guide on [`state machines`](https://www.youtube.com/watch?v=6XMg5csFccw&t=2s) is located here if you want to follow along!
+A video guide on [`state machines`](https://www.youtube.com/watch?v=0LuQa6T_pKQ&t=2s) is located here if you want to follow along!
 
 ## Starting off
 
